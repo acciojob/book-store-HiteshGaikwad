@@ -6,36 +6,76 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class BookRepository {
 
-    public BookRepository(){
-        
+    private List<Book> bookList;
+    private int id;
+
+
+    public BookRepository() {
+        this.bookList = new ArrayList<Book>();
+        this.id=0;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public List<Book> getBookList() {
+        return bookList;
+    }
+
+    public void setBookList(List<Book> bookList) {
+        this.bookList = bookList;
+    }
+
+    // save book to the database
     public Book save(Book book){
-        return null;
+        book.setId(id);
+        bookList.add(id,book);
+        id++;
+        return book;
     }
 
     public Book findBookById(int id){
-
+        //check if index is valid or not
+        if(getBookList().size()>id) {
+            return getBookList().get(id);
+        }
         return null;
     }
 
     public List<Book> findAll(){
-        return null;
+        return getBookList();
     }
 
     public void deleteBookById(int id){
-        return;
+        getBookList().remove(id);
     }
 
     public void deleteAll(){
-        return;
+        getBookList().clear();
     }
 
     public List<Book> findBooksByAuthor(String author){
-        return null;
+       List<Book> list=new ArrayList<>();
+       for(Book book: getBookList()){
+           if(book.getAuthor().equals(author)){
+               list.add(book);
+           }
+       }
+       return list;
     }
 
     public List<Book> findBooksByGenre(String genre){
-        return null;
+        List<Book> list=new ArrayList<>();
+        for(Book book: getBookList()){
+            if(book.getGenre().equals(genre)){
+                list.add(book);
+            }
+        }
+        return list;
     }
 }
