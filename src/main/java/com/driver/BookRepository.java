@@ -41,11 +41,17 @@ public class BookRepository {
 
     public Book findBookById(int id){
         //check if index is valid or not
-        if(bookList.size()>id) {
-            return bookList.get(id);
-        }else {
-            return null;
+//        if(bookList.size()>id) {
+//            return bookList.get(id);
+//        }else {
+//            return null;
+//        }
+        for(Book num: bookList){
+            if(num.getId()==id){
+                return num;
+            }
         }
+        return null;
     }
 
     public List<Book> findAll(){
@@ -53,10 +59,15 @@ public class BookRepository {
     }
 
     public void deleteBookById(int id){
-        if(bookList.size()>id) {
-            bookList.remove(id);
+//        if(bookList.size()>id) {
+//            bookList.remove(id);
+//        }
+        for(Book num : bookList){
+            if(num.getId()==id){
+                bookList.remove(num);
+                return;
+            }
         }
-        return;
     }
 
     public void deleteAll(){
