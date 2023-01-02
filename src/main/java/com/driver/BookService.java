@@ -12,7 +12,7 @@ public class BookService {
     BookRepository bookRepository;
 
     public Book createBook(Book book){
-        return bookRepository.createBook(book);
+        return bookRepository.save(book);
     }
 
     public Book findBookById(String id){

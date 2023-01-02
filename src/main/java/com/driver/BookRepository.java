@@ -32,7 +32,7 @@ public class BookRepository {
     }
 
     // save book to the database
-    public Book createBook(Book book){
+    public Book save(Book book){
         book.setId(id);
         getBookList().add(id,book);
         id++;
