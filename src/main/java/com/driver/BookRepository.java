@@ -12,7 +12,7 @@ public class BookRepository {
 
     public BookRepository() {
         this.bookList = new ArrayList<Book>();
-        this.id=0;
+        this.id=id;
     }
 
     public int getId() {
