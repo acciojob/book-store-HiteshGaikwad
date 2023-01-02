@@ -43,8 +43,9 @@ public class BookRepository {
         //check if index is valid or not
         if(getBookList().size()>id) {
             return getBookList().get(id);
+        }else {
+            return null;
         }
-        return null;
     }
 
     public List<Book> findAll(){
@@ -52,7 +53,10 @@ public class BookRepository {
     }
 
     public void deleteBookById(int id){
-        getBookList().remove(id);
+        if(getBookList().size()>id) {
+            getBookList().remove(id);
+        }
+        return;
     }
 
     public void deleteAll(){
