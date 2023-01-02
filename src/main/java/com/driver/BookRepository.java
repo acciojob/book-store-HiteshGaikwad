@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class BookRepository {
 
-    private List<Book> bookList;
+     List<Book> bookList;
     private int id;
 
 
@@ -23,13 +23,13 @@ public class BookRepository {
         this.id = id;
     }
 
-    public List<Book> getBookList() {
-        return bookList;
-    }
-
-    public void setBookList(List<Book> bookList) {
-        this.bookList = bookList;
-    }
+//    public List<Book> getBookList() {
+//        return bookList;
+//    }
+//
+//    public void setBookList(List<Book> bookList) {
+//        this.bookList = bookList;
+//    }
 
     // save book to the database
     public Book save(Book book){
@@ -41,31 +41,31 @@ public class BookRepository {
 
     public Book findBookById(int id){
         //check if index is valid or not
-        if(getBookList().size()>id) {
-            return getBookList().get(id);
+        if(bookList.size()>id) {
+            return bookList.get(id);
         }else {
             return null;
         }
     }
 
     public List<Book> findAll(){
-        return getBookList();
+        return bookList;
     }
 
     public void deleteBookById(int id){
-        if(getBookList().size()>id) {
-            getBookList().remove(id);
+        if(bookList.size()>id) {
+            bookList.remove(id);
         }
         return;
     }
 
     public void deleteAll(){
-        getBookList().clear();
+        bookList.clear();
     }
 
     public List<Book> findBooksByAuthor(String author){
        List<Book> list=new ArrayList<>();
-       for(Book book: getBookList()){
+       for(Book book: bookList){
            if(book.getAuthor().equals(author)){
                list.add(book);
            }
@@ -75,7 +75,7 @@ public class BookRepository {
 
     public List<Book> findBooksByGenre(String genre){
         List<Book> list=new ArrayList<>();
-        for(Book book: getBookList()){
+        for(Book book: bookList){
             if(book.getGenre().equals(genre)){
                 list.add(book);
             }
